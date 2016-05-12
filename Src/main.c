@@ -267,6 +267,8 @@ void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void LcdTask(void const * argument)
 {
+	GPIO_PinState ps;
+
 	dis_touch();
 	LCD_Init();
 	LCD_clear(COLOR_YELLOW);
@@ -274,7 +276,9 @@ void LcdTask(void const * argument)
 
 	while(1)
 	{
-		if(!PENIRQ)
+		ps = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
+		
+		if(ps == GPIO_PIN_RESET)
 		{
 			if(get_point_xy())
 			{
