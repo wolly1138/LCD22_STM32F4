@@ -12,8 +12,7 @@
 *
 *********************************************************************************************************/
 #include "stm32f4xx_hal.h"
-#include "FreeRTOS.h"
-#include "task.h"
+#include "cmsis_os.h"
 #include "lcd22.h"
 //#include "ascii hex(8x16).h"
 volatile alt_u8 touch_wr_index;
