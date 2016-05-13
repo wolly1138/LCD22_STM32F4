@@ -256,6 +256,7 @@ static HAL_StatusTypeDef SPI_CheckFlag_BSY(SPI_HandleTypeDef *hspi, uint32_t Tim
   *               the configuration information for SPI module.
   * @retval HAL status
   */
+#pragma optimize = none
 HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
 {
   /* Check the SPI handle allocation */
@@ -443,6 +444,7 @@ __weak void HAL_SPI_MspDeInit(SPI_HandleTypeDef *hspi)
   * @param  Timeout: Timeout duration
   * @retval HAL status
   */
+#pragma optimize = none
 HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)
 {
   uint32_t tickstart = 0U;
@@ -593,6 +595,7 @@ error:
   * @param  Timeout: Timeout duration
   * @retval HAL status
   */
+#pragma optimize = none
 HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout)
 {
 #ifdef USE_SPI_CRC

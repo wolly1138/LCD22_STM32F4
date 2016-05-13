@@ -26,6 +26,7 @@ extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi3;
 
 #if defined(LCD22_SPI)
+#pragma optimize = none
 void LCD_WR_Data(alt_u16 val)
 {
     alt_u8 SPI_DATA;
@@ -59,6 +60,7 @@ void LCD_WR_CMD(alt_u16 index,alt_u16 val)
     LCD_WR_Data(val);
 }
 
+#pragma optimize = none
 alt_u16 get_touch_data(alt_u8 cmd)
 {
     alt_u8 tmp1,tmp2;
