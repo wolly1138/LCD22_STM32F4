@@ -15,7 +15,7 @@
 #ifndef LCD22_H_
 #define LCD22_H_
 
-#define delay_ms(ms)	osDelay(ms)//vTaskDelay(ms/portTICK_RATE_MS)
+#define delay_ms(ms)	HAL_Delay(ms)//osDelay(ms)
 
 #define alt_u32			unsigned int
 #define alt_u16			unsigned short
@@ -42,7 +42,7 @@
 #define lcd_wr_clk()   {LCD_WR_CLR;LCD_WR_SET;}
 #endif
 
-#define lcd_rst()      {LCD_RST_CLR;delay_ms(1);LCD_RST_SET;delay_ms(1);}
+#define lcd_rst()      {LCD_RST_CLR;delay_ms(10);LCD_RST_SET;delay_ms(10);}
 #define LCD22_SPI_INIT(hspi)  HAL_SPI_Init(hspi)
 #define TOUCH_SPI_INIT(hspi)  HAL_SPI_Init(hspi)
 

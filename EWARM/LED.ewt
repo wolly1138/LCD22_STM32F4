@@ -1173,6 +1173,9 @@
       </file>
       <file>
         <name>$PROJ_DIR$\..\Src\LCD22.c</name>
+        <configuration>
+          <name>LED</name>
+        </configuration>
       </file>
       <file>
         <name>$PROJ_DIR$\..\Src\LCD22.h</name>

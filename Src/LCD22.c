@@ -15,6 +15,8 @@
 #include "cmsis_os.h"
 #include "lcd22.h"
 //#include "ascii hex(8x16).h"
+volatile xy_t touch_xy_buffer[TOUCH_MAX_CACHE];
+
 volatile alt_u8 touch_wr_index;
 volatile alt_u8 touch_rd_index;
 volatile alt_u8 touch_counter;
@@ -22,8 +24,6 @@ alt_u16 color[]= {0xF800,0x07E0,0x001F,0xFFE0,0x0000,0xFFFF,0x07FF,0xF81F};
 
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi3;
-
-volatile xy_t touch_xy_buffer[TOUCH_MAX_CACHE];
 
 #if defined(LCD22_SPI)
 void LCD_WR_Data(alt_u16 val)
@@ -61,7 +61,8 @@ void LCD_WR_CMD(alt_u16 index,alt_u16 val)
 
 alt_u16 get_touch_data(alt_u8 cmd)
 {
-    alt_u8 tmp1,tmp2,SPI_DATA;
+    alt_u8 tmp1,tmp2;
+    alt_u8 SPI_DATA;
     alt_u16 tmp;
     SPI_DATA = cmd;
     //alt_avalon_spi_command(SPI_TOUCH_BASE,0,1,&SPI_DATA,0,NULL,ALT_AVALON_SPI_COMMAND_MERGE);

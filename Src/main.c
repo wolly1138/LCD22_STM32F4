@@ -108,7 +108,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  osThreadDef(lcdTask, LcdTask, osPriorityAboveNormal, 0, 2048);
+  osThreadDef(lcdTask, LcdTask, osPriorityAboveNormal, 0, 1024);
   lcdTaskHandle = osThreadCreate(osThread(lcdTask), NULL);
   /* USER CODE END RTOS_THREADS */
 
@@ -227,13 +227,16 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, SPI3_CS_Pin|SPI1_RS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI3_CS_GPIO_Port, SPI3_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI1_RS_GPIO_Port, SPI1_RS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LCD_RST_GPIO_Port, LCD_RST_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : SPI3_CS_Pin SPI1_RS_Pin */
   GPIO_InitStruct.Pin = SPI3_CS_Pin|SPI1_RS_Pin;
