@@ -26,7 +26,6 @@ extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi3;
 
 #if defined(LCD22_SPI)
-#pragma optimize = none
 void LCD_WR_Data(alt_u16 val)
 {
     alt_u8 SPI_DATA;
