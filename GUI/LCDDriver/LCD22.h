@@ -66,8 +66,10 @@ void LCD_WR_Data(alt_u16 val);
 void LCD_test();
 void LCD_clear(alt_u16 p);
 
-void DisplayChar(alt_u8 casc,alt_u8 postion_x,alt_u8 postion_y);
-void DisplayString(alt_u8 *s,alt_u8 x,alt_u8 y);	//Ó¢ÎÄ×Ö·û´®ÏÔÊ¾.
+//void DisplayChar(alt_u8 casc,alt_u8 postion_x,alt_u8 postion_y);
+//void DisplayString(alt_u8 *s,alt_u8 x,alt_u8 y);	//Ó¢ÎÄ×Ö·û´®ÏÔÊ¾.
+
+void write_dot(alt_u8 dx,alt_u16 dy,alt_u16 index);
 
 typedef struct xy
 {
@@ -83,3 +85,4 @@ alt_u8 draw_lcd(void);
 //volatile xy_t touch_xy_buffer[TOUCH_MAX_CACHE];
 
 #endif /* LCD22_H_ */
+

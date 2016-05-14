@@ -39,6 +39,9 @@ Version-Date---Author-Explanation
 #include "GUI_Private.h"
 #include "GUIDebug.h"
 
+#include "LCD22.h"
+alt_u16 LCD22_panel[240][320];
+
 #if (LCD_CONTROLLER == -1) \
     && (!defined(WIN32) | defined(LCD_SIMCONTROLLER))
 
@@ -391,6 +394,9 @@ void LCD_L0_SetPixelIndex(int x, int y, int PixelIndex) {
   /* Write into hardware ... Adapt to your system */
   {
     /* ... */
+	LCD22_panel[x][y] = (alt_u16) PixelIndex;
+	
+	write_dot((alt_u8) x,(alt_u16) y,(alt_u16) PixelIndex);
   }
 }
 
@@ -415,7 +421,9 @@ unsigned int LCD_L0_GetPixelIndex(int x, int y) {
   #endif
   /* Read from hardware ... Adapt to your system */
   {
-    PixelIndex = 0;/* ... */
+    //PixelIndex = 0;/* ... */
+
+	PixelIndex = LCD22_panel[x][y];
   }
   return PixelIndex;
 }
