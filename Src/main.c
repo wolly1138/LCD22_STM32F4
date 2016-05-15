@@ -35,8 +35,8 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */
-//#include "LCD22.h"
 #include "GUI.h"
+#include "LCD22.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -146,7 +146,7 @@ void SystemClock_Config(void)
 
   __HAL_RCC_PWR_CLK_ENABLE();
 
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
 
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -154,7 +154,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 100;
+  RCC_OscInitStruct.PLL.PLLN = 128;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
@@ -166,7 +166,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
-  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3);
+  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4);
 
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
@@ -207,7 +207,7 @@ void MX_SPI3_Init(void)
   hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi3.Init.NSS = SPI_NSS_SOFT;
-  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -276,24 +276,24 @@ void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void LcdTask(void const * argument)
-{
+{	
+	GPIO_PinState ps;
+
+	dis_touch();
+	
 	GUI_Init();
-	GUI_SetBkColor(GUI_BLUE);
+	//GUI_SetBkColor(GUI_BLUE);
 	GUI_SetColor(GUI_RED);
 	GUI_Clear();
 
 	GUI_DrawCircle(100,100,50);
-	
-	for(;;)
-	{
-		osDelay(1);
-	}
-/*
-	GPIO_PinState ps;
 
-	dis_touch();
-	LCD_Init();
-	LCD_clear(COLOR_YELLOW);
+	GUI_DispStringAt("Made By THUA!",10,10);
+
+	GUI_CURSOR_Show();
+	
+	//LCD22_Init();
+	//LCD_clear(COLOR_YELLOW);
 	en_touch();
 
 	while(1)
@@ -304,13 +304,16 @@ void LcdTask(void const * argument)
 		{
 			if(get_point_xy())
 			{
-				draw_lcd();
+				get_curr_pot();
+				
+				GUI_TOUCH_Exec();
+
+				GUI_Exec();
 			}
 		}
-
 		osDelay(1);
 	}
-*/
+
 }
 
 /* USER CODE END 4 */
@@ -321,9 +324,9 @@ void StartDefaultTask(void const * argument)
 
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
-  for(;;)
+ while(1)
   {
-    osDelay(1);
+  	osDelay(1);
   }
   /* USER CODE END 5 */ 
 }
