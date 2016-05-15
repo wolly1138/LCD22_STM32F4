@@ -25,6 +25,8 @@ alt_u16 color[]= {0xF800,0x07E0,0x001F,0xFFE0,0x0000,0xFFFF,0x07FF,0xF81F};
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi3;
 
+xy_t curr_pot;
+
 #if defined(LCD22_SPI)
 void LCD_WR_Data(alt_u16 val)
 {
@@ -156,7 +158,35 @@ alt_u8 get_point_xy(void)
     }
 
     touch_counter++;
+
     return 1;
+}
+
+alt_u8 get_curr_pot(void)
+{
+    LCD22_SPI_INIT(&hspi1);
+    LCD_CS_CLR;
+    if(touch_counter==0)
+    {
+        return 0;
+    }
+    touch_counter--;
+
+ 	if(touch_rd_index < (TOUCH_MAX_CACHE-1))
+    {
+        touch_rd_index++;
+    }
+    else
+    {
+        touch_rd_index = 0;
+    }
+	
+	curr_pot.x = touch_xy_buffer[touch_rd_index].x;
+	curr_pot.y = touch_xy_buffer[touch_rd_index].y;		
+
+	LCD_CS_SET;
+
+	return 1;
 }
 
 alt_u8 draw_lcd(void)
@@ -175,6 +205,9 @@ alt_u8 draw_lcd(void)
     LCD_WR_CMD(9,touch_xy_buffer[touch_rd_index].x+(DOT_WIDTH-1));
     LCD_WR_CMD(11,touch_xy_buffer[touch_rd_index].y+(DOT_WIDTH-1));
 
+	curr_pot.x = touch_xy_buffer[touch_rd_index].x;
+	curr_pot.y = touch_xy_buffer[touch_rd_index].y;		
+	
     if(touch_rd_index < (TOUCH_MAX_CACHE-1))
     {
         touch_rd_index++;

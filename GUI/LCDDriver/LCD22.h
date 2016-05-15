@@ -80,9 +80,12 @@ typedef struct xy
 alt_u16 get_touch_data(alt_u8 cmd);
 xy_t get_touch_xy(void);
 alt_u8 get_point_xy(void);
+alt_u8 get_curr_pot(void);
 alt_u8 draw_lcd(void);
 
-//volatile xy_t touch_xy_buffer[TOUCH_MAX_CACHE];
+extern xy_t curr_pot;
+
+//extern volatile xy_t touch_xy_buffer[TOUCH_MAX_CACHE];
 
 #endif /* LCD22_H_ */
 

@@ -20,7 +20,6 @@ Purpose     : Core routines
 #include <stddef.h>           /* needed for definition of NULL */
 
 #define  GL_CORE_C
-
 #include "GUI_Private.h"
 #include "GUIDebug.h"
 
