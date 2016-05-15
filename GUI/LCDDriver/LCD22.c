@@ -198,7 +198,7 @@ alt_u8 draw_lcd(void)
     return 1;
 }
 
-void LCD_Init()
+void LCD22_Init()
 {
     touch_counter = 0;
     touch_wr_index = 0;
@@ -330,6 +330,17 @@ void LCD_clear(alt_u16 p)
     LCD_CS_SET;
 }
 
+void write_dot(alt_u8 dx,alt_u16 dy,alt_u16 index)
+{
+	LCD_WR_CMD(0x08,0x00);
+	LCD_WR_CMD(0x0a,0x0000);
+	LCD_WR_CMD(0x09,0xEF);
+	LCD_WR_CMD(0x0b,0x013F);
+
+	LCD_WR_CMD(0x06,dx);
+	LCD_WR_CMD(0x07,dy);
+	LCD_WR_CMD(0x0E,index);
+}
 /*void DisplayChar(alt_u8 casc,alt_u8 postion_x,alt_u8 postion_y)
 {
 	alt_u8 i,j,b;

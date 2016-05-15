@@ -60,7 +60,7 @@
 #define DOT_WIDTH 2
 #define TOUCH_MAX_CACHE 8
 
-void LCD_Init();
+void LCD22_Init();
 void LCD_WR_CMD(alt_u16 index,alt_u16 val);
 void LCD_WR_Data(alt_u16 val);
 void LCD_test();

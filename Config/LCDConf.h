@@ -39,7 +39,7 @@ Purpose     : Sample configuration file
 
 #define LCD_SWAP_RB (1)
 
-#define LCD_INIT_CONTROLLER() LCD_Init();
+#define LCD_INIT_CONTROLLER() LCD22_Init();
 
 #endif /* LCDCONF_H */
 

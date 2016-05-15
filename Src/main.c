@@ -35,7 +35,8 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */
-#include "LCD22.h"
+//#include "LCD22.h"
+#include "GUI.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -270,6 +271,18 @@ void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void LcdTask(void const * argument)
 {
+	GUI_Init();
+	GUI_SetBkColor(GUI_BLUE);
+	GUI_SetColor(GUI_RED);
+	GUI_Clear();
+
+	GUI_DrawCircle(100,100,50);
+	
+	for(;;)
+	{
+		osDelay(1);
+	}
+/*
 	GPIO_PinState ps;
 
 	dis_touch();
@@ -291,6 +304,7 @@ void LcdTask(void const * argument)
 
 		osDelay(1);
 	}
+*/
 }
 
 /* USER CODE END 4 */
