@@ -104,12 +104,12 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityAboveNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  osThreadDef(lcdTask, LcdTask, osPriorityAboveNormal, 0, 1024);
+  osThreadDef(lcdTask, LcdTask, osPriorityNormal, 0, 1024);
   lcdTaskHandle = osThreadCreate(osThread(lcdTask), NULL);
   /* USER CODE END RTOS_THREADS */
 
@@ -277,40 +277,27 @@ void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void LcdTask(void const * argument)
 {	
-	GPIO_PinState ps;
-
 	dis_touch();
 	
 	GUI_Init();
 	//GUI_SetBkColor(GUI_BLUE);
-	GUI_SetColor(GUI_RED);
-	GUI_Clear();
+	//GUI_SetColor(GUI_RED);
+	//GUI_Clear();
 
-	GUI_DrawCircle(100,100,50);
+	//GUI_DrawCircle(100,100,50);
 
-	GUI_DispStringAt("Made By THUA!",10,10);
-
-	GUI_CURSOR_Show();
+	//GUI_DispStringAt("Made By THUA!",10,10);
+	
+	//GUI_CURSOR_Show();
 	
 	//LCD22_Init();
 	//LCD_clear(COLOR_YELLOW);
 	en_touch();
 
+	GUIDEMO_main();
+	
 	while(1)
 	{
-		ps = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
-		
-		if(ps == GPIO_PIN_RESET)
-		{
-			if(get_point_xy())
-			{
-				get_curr_pot();
-				
-				GUI_TOUCH_Exec();
-
-				GUI_Exec();
-			}
-		}
 		osDelay(1);
 	}
 
@@ -326,6 +313,21 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
  while(1)
   {
+  	GPIO_PinState ps;
+
+  	ps = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2);
+		
+	if(ps == GPIO_PIN_RESET)
+	{
+		if(get_point_xy())
+		{
+			get_curr_pot();
+			
+			GUI_TOUCH_Exec();
+
+			GUI_Exec();
+		}
+	}
   	osDelay(1);
   }
   /* USER CODE END 5 */ 
