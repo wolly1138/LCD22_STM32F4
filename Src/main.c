@@ -37,6 +37,7 @@
 /* USER CODE BEGIN Includes */
 #include "GUI.h"
 #include "LCD22.h"
+#include "GUIDEMO.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
