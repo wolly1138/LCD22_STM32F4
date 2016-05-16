@@ -1,0 +1,2 @@
+stm32f4xx_hal_spi.c文件中HAL_SPI_Receive函数应手动增加
+#pragma optimize = none
