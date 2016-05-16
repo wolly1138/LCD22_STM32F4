@@ -231,6 +231,8 @@ alt_u8 draw_lcd(void)
     return 1;
 }
 
+//alt_u16* LCD22_panel;
+
 void LCD22_Init()
 {
     touch_counter = 0;
@@ -284,6 +286,8 @@ void LCD22_Init()
     LCD_WR_CMD(0x05,0x0010);
     LCD_WR_CMD(0x01,0x0000);
     LCD_WR_CMD(0x00,0x0000);
+
+	//LCD22_panel = (alt_u16*)pvPortMalloc(100 * 50 * 2);
 }
 
 void LCD_test()
