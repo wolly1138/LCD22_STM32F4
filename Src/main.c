@@ -281,6 +281,7 @@ void LcdTask(void const * argument)
 	dis_touch();
 	
 	GUI_Init();
+/*
 	GUI_SetBkColor(GUI_BLUE);
 	GUI_SetColor(GUI_RED);
 	GUI_Clear();
@@ -290,10 +291,10 @@ void LcdTask(void const * argument)
 	GUI_DispStringAt("Made By THUA!",10,10);
 	
 	GUI_CURSOR_Show();
-
-	//GUIDEMO_main();
-	
+*/
 	en_touch();
+
+	GUIDEMO_main();
 	
 	while(1)
 	{

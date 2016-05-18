@@ -424,10 +424,9 @@ unsigned int LCD_L0_GetPixelIndex(int x, int y) {
   /* Read from hardware ... Adapt to your system */
   {
     PixelIndex = 0;/* ... */
+
 	if((x >= 190) && (x < 240) && (y >= 270) && (y < 320))
 		PixelIndex = LCD22_panel[(x-190)*50 + (y-270)];
-	else
-		PixelIndex = 0;
   }
   return PixelIndex;
 }

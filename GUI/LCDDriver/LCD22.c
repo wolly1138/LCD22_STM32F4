@@ -288,12 +288,6 @@ void LCD22_Init()
     LCD_WR_CMD(0x00,0x0000);
 
 	LCD22_panel = (alt_u16*)pvPortMalloc(50 * 50 * 2);
-
-	int i;
-	for(i=0;i<50 * 50 * 2;i++)
-	{
-		LCD22_panel[i] = 0xFF0000;//GUI_BLUE
-	}
 }
 
 void LCD_test()
