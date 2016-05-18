@@ -12,7 +12,7 @@
           
           
           
-        <Column0>170</Column0><Column1>27</Column1><Column2>27</Column2><Column3>0</Column3></ColumnWidths>
+        <Column0>153</Column0><Column1>27</Column1><Column2>27</Column2><Column3>0</Column3></ColumnWidths>
       </Workspace>
       <Build>
         
@@ -60,7 +60,7 @@
       
       
       
-    <Top><Row0><Sizes><Toolbar-011D9F70><key>iaridepm.enu1</key></Toolbar-011D9F70></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>435</Bottom><Right>244</Right><x>-2</x><y>-2</y><xscreen>497</xscreen><yscreen>629</yscreen><sizeHorzCX>363836</sizeHorzCX><sizeHorzCY>916910</sizeHorzCY><sizeVertCX>180088</sizeVertCX><sizeVertCY>637026</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>206</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>208</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>303207</sizeHorzCY><sizeVertCX>363836</sizeVertCX><sizeVertCY>916910</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-011D9F70><key>iaridepm.enu1</key></Toolbar-011D9F70></Sizes></Row0><Row1><Sizes/></Row1><Row2><Sizes><Toolbar-1C6260F8><key>debuggergui.enu1</key></Toolbar-1C6260F8></Sizes></Row2><Row3><Sizes><Toolbar-1C626350><key>armstlink2.enu1</key></Toolbar-1C626350></Sizes></Row3></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>387</Bottom><Right>244</Right><x>-2</x><y>-2</y><xscreen>497</xscreen><yscreen>629</yscreen><sizeHorzCX>363836</sizeHorzCX><sizeHorzCY>916910</sizeHorzCY><sizeVertCX>180088</sizeVertCX><sizeVertCY>567055</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>206</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>208</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>303207</sizeHorzCY><sizeVertCX>363836</sizeVertCX><sizeVertCY>916910</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 
