@@ -4,7 +4,7 @@ stlinkfoundProbes=
 CStepIntDis=_ 0
 LeaveTargetRunning=_ 0
 [DebugChecksum]
-Checksum=1134287835
+Checksum=-173981686
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -26,11 +26,11 @@ ShowArgs=0
 MixedMode=1
 [SWOTraceHWSettings]
 OverrideDefaultClocks=0
-CpuClock=128000000
+CpuClock=96000000
 ClockAutoDetect=0
 ClockWanted=2000000
 JtagSpeed=2000000
-Prescaler=64
+Prescaler=48
 TimeStampPrescIndex=0
 TimeStampPrescData=0
 PcSampCYCTAP=1

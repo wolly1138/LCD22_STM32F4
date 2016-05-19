@@ -23,7 +23,7 @@ volatile alt_u8 touch_counter;
 alt_u16 color[]= {0xF800,0x07E0,0x001F,0xFFE0,0x0000,0xFFFF,0x07FF,0xF81F};
 
 extern SPI_HandleTypeDef hspi1;
-extern SPI_HandleTypeDef hspi3;
+extern SPI_HandleTypeDef hspi2;
 
 xy_t curr_pot;
 
@@ -69,11 +69,11 @@ alt_u16 get_touch_data(alt_u8 cmd)
     alt_u16 tmp;
     SPI_DATA = cmd;
     //alt_avalon_spi_command(SPI_TOUCH_BASE,0,1,&SPI_DATA,0,NULL,ALT_AVALON_SPI_COMMAND_MERGE);
-    HAL_SPI_Transmit(&hspi3,&SPI_DATA,1,500);
+    HAL_SPI_Transmit(&hspi2,&SPI_DATA,1,500);
     //alt_avalon_spi_command(SPI_TOUCH_BASE,0,0,NULL,1,&tmp1,ALT_AVALON_SPI_COMMAND_MERGE);
     //alt_avalon_spi_command(SPI_TOUCH_BASE,0,0,NULL,1,&tmp2,ALT_AVALON_SPI_COMMAND_MERGE);
-    HAL_SPI_Receive(&hspi3,&tmp1,1,500);
-    HAL_SPI_Receive(&hspi3,&tmp2,1,500);
+    HAL_SPI_Receive(&hspi2,&tmp1,1,500);
+    HAL_SPI_Receive(&hspi2,&tmp2,1,500);
 
     tmp = (((alt_u16)tmp1)<<5) | (((alt_u16)tmp2)>>3);
 
@@ -110,7 +110,7 @@ alt_u8 get_point_xy(void)
     {
         return 0;
     }
-    TOUCH_SPI_INIT(&hspi3);
+    TOUCH_SPI_INIT(&hspi2);
     en_touch();
 
     for(n=0; n<SAMP_COUNT; n++)

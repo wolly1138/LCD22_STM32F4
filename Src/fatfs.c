@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * File Name          : mxconstants.h
-  * Description        : This file contains the common defines of the application
+  * @file   fatfs.c
+  * @brief  Code for fatfs applications
   ******************************************************************************
   *
   * COPYRIGHT(c) 2016 STMicroelectronics
@@ -30,38 +30,40 @@
   *
   ******************************************************************************
   */
-/* Includes ------------------------------------------------------------------*/
 
-/* USER CODE BEGIN Includes */
+#include "fatfs.h"
 
-/* USER CODE END Includes */
+uint8_t retSD;    /* Return value for SD */
+char SD_Path[4];  /* SD logical drive path */
 
-/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN Variables */
 
-#define SPI2_CS_Pin GPIO_PIN_0
-#define SPI2_CS_GPIO_Port GPIOC
-#define T_IRQ_Pin GPIO_PIN_2
-#define T_IRQ_GPIO_Port GPIOC
-#define T_BUSY_Pin GPIO_PIN_3
-#define T_BUSY_GPIO_Port GPIOC
-#define SDIO_CD_Pin GPIO_PIN_4
-#define SDIO_CD_GPIO_Port GPIOA
-#define SPI1_RS_Pin GPIO_PIN_7
-#define SPI1_RS_GPIO_Port GPIOC
-#define LCD_RST_Pin GPIO_PIN_9
-#define LCD_RST_GPIO_Port GPIOA
-#define SPI1_CS_Pin GPIO_PIN_6
-#define SPI1_CS_GPIO_Port GPIOB
-/* USER CODE BEGIN Private defines */
+/* USER CODE END Variables */    
 
-/* USER CODE END Private defines */
+void MX_FATFS_Init(void) 
+{
+  /*## FatFS: Link the SD driver ###########################*/
+  retSD = FATFS_LinkDriver(&SD_Driver, SD_Path);
+
+  /* USER CODE BEGIN Init */
+  /* additional user code for init */     
+  /* USER CODE END Init */
+}
 
 /**
-  * @}
-  */ 
+  * @brief  Gets Time from RTC 
+  * @param  None
+  * @retval Time in DWORD
+  */
+DWORD get_fattime(void)
+{
+  /* USER CODE BEGIN get_fattime */
+  return 0;
+  /* USER CODE END get_fattime */  
+}
 
-/**
-  * @}
-*/ 
+/* USER CODE BEGIN Application */
+     
+/* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
